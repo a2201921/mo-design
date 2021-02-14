@@ -1,18 +1,16 @@
 import React, {useContext, useState, FunctionComponentElement} from 'react'
 import classNames from 'classnames'
 
-import Icon from "../Icon/icon";
+import Icon from "../Icon";
 import Transition from "../Transition/transition";
 import {MenuContext} from './menu'
 import {MenuItemProps} from './menuItem'
-
 
 export interface SubMenuProps {
     index?: string;
     title: string;
     className?: string;
 }
-
 
 const SubMenu: React.FC<SubMenuProps> = ({index, title, children, className}) => {
     const context = useContext(MenuContext)

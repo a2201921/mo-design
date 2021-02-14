@@ -1,7 +1,6 @@
-import React, {ChangeEvent, FC, useRef, useState} from "react";
-import Button from "../Button/button";
+import React, { ChangeEvent, FC, useRef, useState } from "react";
 import axios from "axios";
-import {UploadList} from "./uploadList";
+import { UploadList } from "./uploadList";
 import Dragger from "./dragger";
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
@@ -22,7 +21,7 @@ export interface UploadProps {
     defaultFileList?: UploadFile[]
     beforeUpload?: (file: File) => boolean | Promise<File>;
     onProgress?: (percentage: number, file: UploadFile) => void
-    onSuccess?: (data: any, file: UploadFile) => void
+    onSuccess?: (data: any, file: File) => void
     onError?: (err: any, file: UploadFile) => void
     onChange?: (file: UploadFile) => void
     onRemove?: (file: UploadFile) => void
@@ -62,7 +61,7 @@ export const Upload: FC<UploadProps> = (props) => {
         setFileList((prevList) => {
             return prevList.map(file => {
                 if (file.uid === updateFile.uid) {
-                    return {...file, ...updateObj}
+                    return { ...file, ...updateObj }
                 }
                 return file
             })
@@ -106,7 +105,7 @@ export const Upload: FC<UploadProps> = (props) => {
                 const result = beforeUpload(file)
                 if (result && result instanceof Promise) {
                     result.then(processFile => {
-                        post(file)
+                        post(processFile)
                     })
                 } else if (result !== false) {
                     post(file)
@@ -137,8 +136,8 @@ export const Upload: FC<UploadProps> = (props) => {
                 formData.append(key, data[key])
             })
         }
-
-        axios.post(action, formData, {
+        
+        const promise = axios.post(action, formData, {
             headers: {
                 ...headers,
                 "Content-Type": "multipart/form-data",
@@ -147,17 +146,19 @@ export const Upload: FC<UploadProps> = (props) => {
             onUploadProgress: (e) => {
                 let percentage = Math.round((e.loaded * 100) / e.total) || 0
                 if (percentage < 100) {
-                    updateFileList(_file, {percent: percentage, status: 'uploading'})
+                    updateFileList(_file, { percent: percentage, status: 'uploading' })
 
                     if (onProgress) {
                         onProgress(percentage, _file)
                     }
                 }
             }
-        }).then(resp => {
-            updateFileList(_file, {status: 'success', response: resp.data})
+        })
+        
+        promise && promise.then(resp => {
+            updateFileList(_file, { status: 'success', response: resp.data })
             if (onSuccess) {
-                onSuccess(resp.data, _file)
+                onSuccess(resp.data, file)
             }
 
             if (onChange) {
@@ -165,23 +166,23 @@ export const Upload: FC<UploadProps> = (props) => {
             }
 
         }).catch(err => {
-            updateFileList(_file, {status: 'error', error: err})
+            updateFileList(_file, { status: 'error', error: err })
             if (onError) {
                 onError(err, _file)
             }
         })
     }
     return <div className="mo-upload-component">
-        <div className="mo-upload-input" style={{display: 'inline-block'}} onClick={handleClick}>
+        <div className="mo-upload-input" style={{ display: 'inline-block' }} onClick={handleClick}>
             {drag ? <Dragger onFile={(files) => {
                 uploadFiles(files)
             }}>{children}</Dragger> : children}
-            <input type="file" className="mo-file-input" ref={fileInput} style={{display: 'none'}} accept={accept}
-                   multiple={multiple}
-                   onChange={handleFileChange}/>
+            <input type="file" className="mo-file-input" ref={fileInput} style={{ display: 'none' }} accept={accept}
+                multiple={multiple}
+                onChange={handleFileChange} />
         </div>
 
-        <UploadList fileList={fileList} onRemove={handleRemove}/>
+        <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>
 }
 

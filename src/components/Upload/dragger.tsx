@@ -16,7 +16,6 @@ export const Dragger: FC<DraggerProps> = (props) => {
     })
 
     const handleDrop = (e: DragEvent<HTMLElement>) => {
-        console.log(e)
         e.preventDefault()
         setDragOver(false)
         onFile(e.dataTransfer.files)

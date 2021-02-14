@@ -1,9 +1,11 @@
 import React from 'react'
-import { render, RenderResult, fireEvent, cleanup, waitFor } from '@testing-library/react'
+import { render, RenderResult, fireEvent, waitFor } from '@testing-library/react'
 import Menu, { MenuProps } from "./menu";
 import MenuItem from "./menuItem";
 import SubMenu from './subMenu';
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+library.add(faAngleDown)
 const testProps: MenuProps = {
     defaultIndex: '0',
     onSelect: jest.fn(),
