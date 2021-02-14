@@ -16,8 +16,8 @@ const storyWrapper = (storyFn) => (
 )
 
 addParameters({info: {inline: true,header: false}})
-addDecorator(storyWrapper)
 addDecorator(withInfo)
+addDecorator(storyWrapper)
 export const parameters = {
     actions: {argTypesRegex: "^on[A-Z].*"},
 }
