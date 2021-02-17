@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import {FC} from "react";
 import Tabs, {TabsProps} from "./tabs";
 import TabPane, {TabPaneProps} from "./tabPane";
 

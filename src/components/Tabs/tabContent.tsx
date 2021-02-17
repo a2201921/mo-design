@@ -1,5 +1,4 @@
-import React, {Children, cloneElement, FC, FunctionComponentElement, ReactElement, ReactNode} from "react";
-import classNames from "classnames";
+import React, {Children, cloneElement, FC, FunctionComponentElement, ReactNode} from "react";
 import {TabPaneProps} from "./tabPane";
 
 interface TabContentProps {
