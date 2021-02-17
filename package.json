@@ -1,6 +1,6 @@
 {
   "name": "mo-design",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "React Component library",
   "author": "mo-design",
   "main": "dist/index.js",
