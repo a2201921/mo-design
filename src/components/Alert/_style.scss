@@ -1,0 +1,33 @@
+.mo-alert {
+  position: relative;
+  border-radius: $alert-border-radius;
+  padding: $alert-padding-y 44px $alert-padding-y $alert-padding-x;
+  line-height: $line-height-base;
+  font-weight: $font-weight-base;
+  color: $white;
+
+  &-message {
+    font-size: $alert-message-font-size;
+  }
+
+  &-description {
+    margin-top: .25rem;
+    font-size: $alert-description-font-size;
+    white-space: nowrap;
+    color: darken($white,.8);
+  }
+
+  &-close-icon {
+    position: absolute;
+    right: 20px;
+    top: $alert-padding-y + $alert-icon-font-size/2;
+    font-size: $alert-icon-font-size;
+    cursor: pointer;
+  }
+}
+
+@each $key, $value in $alert-theme-colors {
+  .mo-alert-#{$key} {
+    background: $value;
+  }
+}

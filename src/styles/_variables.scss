@@ -285,3 +285,37 @@ $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-bar-color:                $white !default;
 $progress-bar-transition:           width .6s ease !default;
+
+/*  alert  */
+/*  定义Alert提示样式 */
+$alert-theme-colors: (
+        "default":    $primary,
+        "success":    $success,
+        "warning":    $warning,
+        "danger":     $danger,
+);
+
+$alert-padding-y:                 .5rem !default;
+$alert-padding-x:                 .5rem !default;
+
+$alert-message-font-size:         .875rem !default;
+$alert-description-font-size:     .75rem !default;
+
+$alert-border-width:              $border-width !default;
+$alert-border-radius:             .25rem !default;
+
+$alert-icon-font-size:            .75rem !default;
+
+/*  tabs */
+$tabs-ink-bar-height:           .125rem !default;
+
+$tabs-tab-padding-y:            .5rem !default;
+$tabs-tab-padding-x:            1.25rem !default;
+
+$tabs-pane-padding-y:          .5rem !default;
+$tabs-pane-padding-x:          1.25rem !default;
+
+$tabs-bar-transition:           left .3s ease !default;
+
+$tabs-tab-disabled-color:      $gray-600 !default;
+$tabs-tab-color:               $gray-900!default;

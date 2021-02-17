@@ -2,10 +2,15 @@ import React, {FC} from "react";
 import {ThemeProps} from "../Icon/icon";
 
 export interface ProgressProps {
+    /**  百分比  */
     percent: number;
+    /** 进度条线的宽度，单位 px */
     strokeHeight?: number;
+    /** 显示进度值 */
     showText?: boolean;
+    /** 补充样式 */
     styles?: React.CSSProperties;
+    /** 主题色 */
     theme?: ThemeProps;
 }
 

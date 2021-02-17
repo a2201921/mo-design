@@ -1,6 +1,10 @@
+import React from "react";
+import ReactDOM from 'react-dom'
+import './styles/index.scss'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-
+import Tabs from "./components/Tabs/tabs";
 export { default as AutoComplete } from './components/AutoComplete'
 export { default as Button } from './components/Button'
 export { default as Icon } from './components/Icon'
@@ -11,3 +15,9 @@ export { default as Transition } from './components/Transition'
 export { default as Upload } from './components/Upload'
 
 library.add(fas)
+
+ReactDOM.render(<Tabs />, document.getElementById('root'))
+
+
+
+

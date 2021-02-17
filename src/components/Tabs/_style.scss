@@ -1,0 +1,53 @@
+.mo-tabs {
+  &-bar {
+
+  }
+
+  &-nav {
+    position: relative;
+    border-bottom: $border-width solid $border-color;
+    display: flex;
+  }
+
+  &-tab {
+    list-style: none;
+    margin-right: 24px;
+    padding: $tabs-tab-padding-y $tabs-tab-padding-x;
+    text-decoration: none;
+    color: $tabs-tab-color;
+    cursor: pointer;
+
+    &.is-active, &:hover {
+      color: $primary;
+    }
+
+    &.is-disabled {
+      color: $tabs-tab-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &-ink-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: $tabs-ink-bar-height;
+    width: 100px;
+    transition: $tabs-bar-transition;
+    background: $primary;
+  }
+
+  &-content {
+    padding: $tabs-pane-padding-y $tabs-pane-padding-x;
+  }
+
+  &-pane {
+    list-style: none;
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+}

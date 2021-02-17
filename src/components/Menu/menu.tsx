@@ -14,11 +14,17 @@ type MenuModule = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: string) => void
 
 export interface MenuProps {
+    /** 默认选中索引 */
     defaultIndex?: string,
-    className?: string,
+    /** 菜单类型，现在支持垂直、水平二种*/
     mode?: MenuModule,
+    /** 根节点样式*/
     style?: CSSProperties,
+    /** 根节点样式*/
+    className?: string,
+    /** 被选中时调用*/
     onSelect?: SelectCallback,
+    /** 初始展开的 SubMenu 菜单项 key 数组 */
     defaultOpenSubMenus?: string[];
 }
 

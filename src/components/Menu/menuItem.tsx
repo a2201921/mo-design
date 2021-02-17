@@ -3,14 +3,17 @@ import classNames from "classnames";
 import {MenuContext} from "./menu";
 
 export interface MenuItemProps {
+    /** item的唯一标记 */
     index?: string;
+    /** 是否禁用 */
     disabled?: boolean;
+    /** item根节点额外样式 */
     className?: string;
+    /** 根节点样式 */
     style?: React.CSSProperties;
 }
 
-
-const MenuItem: React.FC<MenuItemProps> = (props) => {
+export const MenuItem: React.FC<MenuItemProps> = (props) => {
     const {index, disabled, className, style, children} = props
 
     const context = useContext(MenuContext)

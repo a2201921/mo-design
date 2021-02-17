@@ -6,6 +6,7 @@ export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning
 
 
 export interface IconProps extends  FontAwesomeIconProps {
+    /** 图标颜色 */
     theme?: ThemeProps
 }
 

@@ -8,6 +8,7 @@ export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 
 interface BaseButtonProps {
+    /** 根节点额外样式*/
     className?: string;
     /** 设置Button的禁用 */
     disabled?: boolean;
@@ -15,7 +16,7 @@ interface BaseButtonProps {
     size?: ButtonSize;
     /** 设置Button的类型 */
     btnType?: ButtonType;
-    children: React.ReactNode;
+    /** 跳转连接 */
     href?: string;
 }
 
